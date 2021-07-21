@@ -1,0 +1,45 @@
+protected 的作用范围是只能当前类的同级包和子类才能使用
+
+平时用的最多的就是子类调用，当前类的同级包调用例子可以看下面的
+
+注意：如果要调用某个类的 clone 方法，那么该类必须继承  Cloneable 接口（没有方法的接口，叫做标记接口），否则会抛出 CloneNotSupportedException 异常
+
+https://blog.csdn.net/qq_28929579/article/details/53965316
+
+例如：
+我想调用调用 Person 类的 clone 方法，又因为 clone 是父类 Object 的 protected 方法
+所以只能是 Person 的子类，或者 Object 的同级包下面的类才能调用，所以我们平时基本上用的都是子类调用
+那如何让别的类也能调用 Person 的 clone 方法呢？
+
+答案是：
+让 Person 重写 clone 方法，实现逻辑调用父类方法，这样 clone 的 protected 访问权限就不是以 Object 为定位，重写之后就是以 Person 为定位，然后只要是 Person 的同级包下面的类就都可以调用 clone 方法了
+
+public class Main {
+
+    public static void main(String[] args) {
+        Person person = new Person();
+        person.clone();
+    }
+}
+
+public class Person implements Cloneable {
+    
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+如何让不同级包的类也可以调用呢？
+答案是：
+再上一个问题的答案的基础上，在包装一下，例如：Person 的同级类 Man 写一个 public clone （不写 @Override 注解就不会识别为重写方法，clone 就可以是 public 了） 的方法，在里面调用 Person 的 clone 方法
+这样别的类就可以通过调用 Man 的 clone 方法就可以了
+
+class Man {
+    
+    public Object clone() throws CloneNotSupportedException {
+        return new Person().clone();
+    }
+}
+
+
+}

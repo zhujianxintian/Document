@@ -1,0 +1,14 @@
+把Tomcat\conf\logging.properties
+
+里面的
+1catalina.org.apache.juli.AsyncFileHandler.encoding = UTF-8
+2localhost.org.apache.juli.AsyncFileHandler.encoding = UTF-8
+java.util.logging.ConsoleHandler.encoding = UTF-8
+改为 GBK
+1catalina.org.apache.juli.AsyncFileHandler.encoding = GBK
+2localhost.org.apache.juli.AsyncFileHandler.encoding = GBK
+java.util.logging.ConsoleHandler.encoding = GBK
+
+1catalina.org.apache.juli.AsyncFileHandler.encoding 对应 Tomcat Catalina Log
+2localhost.org.apache.juli.AsyncFileHandler.encoding 对应 Tomcat Localhost Log
+java.util.logging.ConsoleHandler.encoding 对应 Server

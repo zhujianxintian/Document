@@ -1,0 +1,22 @@
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "typescript": "^4.1.2",
+    "web-vitals": "^1.0.1"
+
+yarn remove @testing-library/jest-dom @testing-library/react @testing-library/user-event @types/jest @types/node @types/react @types/react-dom react-scripts typescript web-vitals
+
+yarn add -D @testing-library/jest-dom@5.11.4 @testing-library/react@11.1.0 @testing-library/user-event@12.1.10 @types/jest@26.0.15 @types/node@12.0.0 @types/react@17.0.0 @types/react-dom@17.0.0 react-scripts@4.0.3 typescript@4.1.2 web-vitals@1.0.1
+
+yarn add -D @types/react-router-dom @types/react-redux @types/redux @types/redux-saga @types/redux-devtools-extension redux-devtools-extension
+
+yarn add react-router-dom react-redux redux redux-saga
+
+classname axios

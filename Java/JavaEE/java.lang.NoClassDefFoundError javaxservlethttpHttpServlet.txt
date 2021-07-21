@@ -1,0 +1,23 @@
+https://blog.csdn.net/qq_43682690/article/details/109364514
+
+java.lang.NoClassDefFoundError: javax/servlet/http/HttpServlet
+最近开始学习Java EE课程，在学到Servlet技术并动手实践的时候，遇到了这么个问题，困扰了很久，百度了好几天都没找着症结，今天终于才发现问题所在。
+我使用的IDE：
+
+然后一开始用的Tomcat版本：
+
+于是问题就不可避免地出现了，无论怎么配置，切换到Servlet页面的时候还是会报错！
+网上很多博客都说的是 导入Tomcat的lib文件夹里的 servlet-api.jar 包，但是试了很多次，没有用
+最后发现的症结：
+Tomcat 10支持的Servlet版本是 5.0，而我的IDEA支持的Servlet版本是 4.0（在创建项目的时候可以注意看一下）
+
+这当然不能通过了！！！
+Tomcat版本换成9.0的，一切迎刃而解，完全不需要导入什么jar包
+各位如果有类似问题，可以检查一下自己Tomcat的版本和IDE的版本是不是匹配
+
+附：tomcat各版本的区别 https://blog.csdn.net/qq_37651267/article/details/94592106
+自己也可以查看Tomcat的 NOTICE 文件，用记事本打开就好，里面就有支持的版本说明
+
+
+总结：是 IDEA 2020 和 Tomcat 10 支持的最高 Servlet 版本不一致
+使用 Tomcat 9 或者最新版 IDEA 即可

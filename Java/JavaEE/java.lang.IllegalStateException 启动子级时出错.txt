@@ -1,0 +1,19 @@
+https://blog.51cto.com/u_14954398/2595110
+
+注解和 web.xml 声明的 Servlet 重复声明
+
+注释或删除任一即可
+
+    @WebServlet("/hello")
+
+    或
+
+    <servlet>
+        <servlet-name>HelloServlet</servlet-name>
+        <servlet-class>com.rain.framework.servlet.HelloServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HelloServlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>

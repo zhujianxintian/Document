@@ -1,0 +1,66 @@
+https://blog.csdn.net/dgreh/article/details/83302358
+
+# 先配置本地的全局用户名和邮箱
+19019@DESKTOP-3G4D2K4 MINGW64 ~/WebstormProjects/component (main)
+$ git config --global user.name “zhujianxintian”
+
+19019@DESKTOP-3G4D2K4 MINGW64 ~/WebstormProjects/component (main)
+$ git config --global user.email "1901967098@qq.com"
+
+# 在本地创建 SSH key
+# 需要把邮件地址换成你自己的邮件地址，然后一路回车，使用默认值即可，由于这个Key也不是用于军事目的，所以也无需设置密码
+# 如果一切顺利的话，可以在用户主目录里找到.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH Key的秘钥对，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人
+19019@DESKTOP-3G4D2K4 MINGW64 ~/WebstormProjects/component (main)
+$ ssh-keygen -t rsa -C "1901967098@qq.com"
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/19019/.ssh/id_rsa):
+Created directory '/c/Users/19019/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/19019/.ssh/id_rsa
+Your public key has been saved in /c/Users/19019/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:LpfMT27emO8zU63gJis7gmtcRFIbNBPzfko3h5jA0bw 1901967098@qq.com
+The key's randomart image is:
++---[RSA 3072]----+
+|     oX+         |
+|    ...Oo        |
+|     o+ ..       |
+|      .oEo .     |
+|     .  S = .  . |
+|      .= = o. . .|
+|   . o. B .. o . |
+|    + .oo+o+* .  |
+|   ... ..*B*++   |
++----[SHA256]-----+
+
+# 打开 id_rsa.pub (可使用 cat id_rsa.pub 或者 gedit id_rsa.pub)，复制里面的 key。里面的 key 是一对看不懂的字符数字组合，不用管它，直接复制
+# 登陆 GitHub，打开“Account settings”，左边选择 SSH Keys，Add SSH Key
+# title 随便填，粘贴 key
+# 验证是否成功，在git bash下输入
+
+	ssh -T git@github.com
+
+# 回车就会看到：You’ve successfully authenticated, but GitHub does not provide shell access 。这就表示已成功连上github。
+
+
+
+# 在当前目录初始化 git 仓库
+19019@DESKTOP-3G4D2K4 MINGW64 ~/WebstormProjects/component
+$ git init
+Initialized empty Git repository in C:/Users/19019/WebstormProjects/component/.git/
+
+# 添加远程仓库地址，名字叫做 origin
+19019@DESKTOP-3G4D2K4 MINGW64 ~/WebstormProjects/component (main)
+$ git remote add origin https://github.com/zhujianxintian/react-typescript-template.git
+
+# 最后执行下面几个命令
+
+# 将当前所有文件添加到暂存区
+git add .
+
+# 将暂存区的文件都提交到本地仓库
+git commit -m ":tada: project init 2021/06/22"
+
+# 将文件 push 到 github 上面，origin 是关联远程仓库时取得别名，main 是要 push 的远程仓库分支
+git push origin main

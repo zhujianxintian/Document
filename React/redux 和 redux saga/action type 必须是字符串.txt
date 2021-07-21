@@ -1,0 +1,23 @@
+当我们使用 TypeScript 写 redux 和 redux saga 的时候，会编写 ACTION_TYPE 来规范 action 中 的 type
+
+但是 type 其实必须是字符串类型的，不然会报错
+
+export enum ACTION_TYPE {
+    CHECK_USER_EXIST = "CHECK_USER_EXIST",
+    CHECK_USER_EXIST_SAGA = "CHECK_USER_EXIST_SAGA",
+    VERIFICATION_IMAGE = "VERIFICATION_IMAGE",
+    VERIFICATION_IMAGE_SAGA = "VERIFICATION_IMAGE_SAGA",
+    USER_LOGIN = "USER_LOGIN",
+    USER_LOGIN_SAGA = "USER_LOGIN_SAGA",
+}
+
+下面这种枚举会有默认值，但是默认值是从 0 开始递增的数字，所以上面这种手动赋值为字符串的才不会报错
+
+export enum ACTION_TYPE {
+    CHECK_USER_EXIST,
+    CHECK_USER_EXIST_SAGA,
+    VERIFICATION_IMAGE,
+    VERIFICATION_IMAGE_SAGA,
+    USER_LOGIN,
+    USER_LOGIN_SAGA,
+}
